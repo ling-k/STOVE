@@ -415,6 +415,7 @@ class Trainer(AbstractTrainer):
 
         start_epoch = self.epoch_start
         step_counter = self.step_start
+        torch.multiprocessing.set_start_method('spawn')
 
         start = time.time()
         if not self.c.supair_only:

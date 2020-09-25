@@ -57,7 +57,8 @@ class StoveConfig:
     device = None
     dtype = double
     max_threads = 8
-    num_workers = 4
+    #num_workers = 4
+    num_workers = 2
 
     # Logging Configuration
     debug = True  # enables logging of position errors etc.
