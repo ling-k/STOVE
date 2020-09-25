@@ -838,22 +838,22 @@ def main(script_args):
     # generate_data(
     #     test_gen=args.test_gen, name='billards_sprites', env=BillardsEnv, config=config)
 
-    config = {
-        'res': 50, 'hw': 30, 'n': 3, 'dt': 1, 'm': 4., 'fc': 0,
-        'init_v_factor': 0.55, 'granularity': 50, 'r': 2,
-        'check_overlap': True}
-
-    generate_data(
-        save=args.save, test_gen=args.test_gen, name='gravity',
-        env=GravityEnv, config=config)
-
-    # config.update({'sprites': True})
+    # config = {
+    #     'res': 50, 'hw': 30, 'n': 3, 'dt': 1, 'm': 4., 'fc': 0,
+    #     'init_v_factor': 0.55, 'granularity': 50, 'r': 2,
+    #     'check_overlap': True}
+    #
     # generate_data(
-    #     test_gen=args.test_gen, name='gravity_sprites', env=GravityEnv, config=config)
-
-    config = {
-        'res': 32, 'hw': 10, 'n': 3, 't': 1., 'm': 1.,
-        'granularity': 50, 'r': 1, 'friction_coefficient': 0}
-
-    generate_billiards_w_actions(
-        config=config, save=args.save, test_gen=args.test_gen)
+    #     save=args.save, test_gen=args.test_gen, name='gravity',
+    #     env=GravityEnv, config=config)
+    #
+    # # config.update({'sprites': True})
+    # # generate_data(
+    # #     test_gen=args.test_gen, name='gravity_sprites', env=GravityEnv, config=config)
+    #
+    # config = {
+    #     'res': 32, 'hw': 10, 'n': 3, 't': 1., 'm': 1.,
+    #     'granularity': 50, 'r': 1, 'friction_coefficient': 0}
+    #
+    # generate_billiards_w_actions(
+    #     config=config, save=args.save, test_gen=args.test_gen)
