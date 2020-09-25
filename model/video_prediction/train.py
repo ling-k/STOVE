@@ -15,6 +15,7 @@ from ..utils.visualize import (
     plot_boxes, plot_grad_flow, plot_patches, plot_bg, get_reward_annotation)
 from ..utils.utils import ExperimentLogger, bw_transform
 
+import wandb
 
 class AbstractTrainer:
     """Abstract trainer class.
@@ -415,7 +416,6 @@ class Trainer(AbstractTrainer):
 
         start_epoch = self.epoch_start
         step_counter = self.step_start
-        torch.multiprocessing.set_start_method('spawn')
 
         start = time.time()
         if not self.c.supair_only:
@@ -486,6 +486,8 @@ class Trainer(AbstractTrainer):
                     self.error_and_log(
                         elbo.item(), mse_rewards.item(), min_ll.item(),
                         prop_dict, data, step_counter, now)
+                    wandb.log({'elbo': elbo.item(), 'mse_reward': mse_rewards.item(), 'min_ll': min_ll.item(),
+                               'step_counter': step_counter, 'epoch': epoch})
 
                 # Save parameters
                 if step_counter % self.c.save_every == 0:
@@ -634,6 +636,8 @@ class Trainer(AbstractTrainer):
             self.error_and_log(
                 elbo.item(), mse_rewards.item(), min_ll.item(), prop_dict, data,
                 step_counter, now, add='_roll')
+
+
 
             if self.c.debug_core_appearance:
                 appearances = prop_dict['obj_appearances'][:, -1]
